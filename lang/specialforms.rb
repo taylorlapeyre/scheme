@@ -1,6 +1,6 @@
-require_relative '../parser/interpreter'
+require_relative 'closure'
 require_relative 'literals'
-require 'pry'
+require_relative 'environment'
 
 module Scheme
   class Quote

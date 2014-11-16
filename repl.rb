@@ -1,5 +1,5 @@
 require_relative 'parser/parser'
-require_relative 'parser/interpreter'
+require_relative 'lang/environment'
 
 # REPL
 ################################################

@@ -1,5 +1,4 @@
 require_relative 'literals'
-require 'pry'
 
 module Scheme
   class BuiltIn

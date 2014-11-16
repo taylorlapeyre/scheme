@@ -1,7 +1,5 @@
-require 'pry'
-require_relative '../lang/literals'
-require_relative '../lang/specialforms'
-require_relative '../lang/builtins'
+require_relative 'literals'
+require_relative 'builtins'
 
 module Scheme
   class Environment
@@ -43,38 +41,6 @@ module Scheme
       builtins.each do |name|
         define(Scheme::Ident.new(name), BuiltIn.new(name))
       end
-    end
-  end
-
-  class Closure
-    def initialize(arguments, body, env)
-      @env = env
-      @body = body
-      @arguments = arguments
-    end
-
-    def is_procedure?
-      true
-    end
-
-    def apply(values, env)
-      arguments = @arguments
-      closure_env = Scheme::Environment.new(@env)
-
-      until values.is_null? || arguments.is_null?
-        name  = arguments.first
-        value = values.first
-        closure_env.define(name, value.evaluate(@env))
-
-        arguments = arguments.rest
-        values    = values.rest
-      end
-
-      @body.evaluate(closure_env)
-    end
-
-    def pprint(n)
-      print "<CLOSURE>"
     end
   end
 end

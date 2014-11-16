@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../parser/parser"
-require_relative "../parser/interpreter"
+require_relative "../lang/environment"
 
 class TestParser < Minitest::Test
   make_my_diffs_pretty!
