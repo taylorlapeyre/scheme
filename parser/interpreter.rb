@@ -52,10 +52,10 @@ module Scheme
       true
     end
 
-    def apply(values)
+    def apply(values, env)
       arguments = @arguments
       closure_env = Scheme::Environment.new(@env)
-      
+
       until values.is_null? || arguments.is_null?
         name  = arguments.first
         value = values.first

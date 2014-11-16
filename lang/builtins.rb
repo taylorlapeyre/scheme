@@ -12,18 +12,30 @@ module Scheme
       true
     end
 
-    def apply(arguments)
+    def extract_args(argument_node, env, vals=[])
+      if argument_node.is_null?
+        vals
+      else
+        arg = argument_node.first
+        vals << arg.evaluate(env) unless arg.is_null?
+        extract_args(argument_node.rest, env, vals)
+      end
+    end
+
+    def apply(arguments, env)
+      args = extract_args(arguments, env)
+
       case @name
       when "b+"
-        bplus(arguments.first, arguments.rest.first)
+        bplus(*args)
       when "b-"
-        bminus(arguments.first, arguments.rest.first)
+        bminus(*args)
       when "b*"
-        bmult(arguments.first, arguments.rest.first)
+        bmult(*args)
       when "b/"
-        bdiv(arguments.first, arguments.rest.first)
+        bdiv(*args)
       when "b="
-        bequals(arguments.first, arguments.rest.first)
+        bequals(*args)
       end
     end
 

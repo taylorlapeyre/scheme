@@ -85,14 +85,13 @@ module Scheme
       arguments = node.rest
 
       if arguments.is_null?
-        dummy_args = Scheme::Cons.new(Scheme::Nil.instance, Scheme::Nil.instance)
-        symbol.apply(dummy_args)
+        arguments = Scheme::Cons.new(Scheme::Nil.instance, Scheme::Nil.instance)
+      end
+
+      if symbol.is_procedure?
+        symbol.apply(arguments, env)
       else
-        # if symbol.is_procedure?
-          symbol.apply(arguments)
-        # else
-        #   symbol.evaluate(env).apply(arguments, env)
-        # end
+        symbol.evaluate(env)
       end
     end
   end
