@@ -1,5 +1,5 @@
 require 'singleton'
-require_relative 'special_forms'
+require_relative 'specialforms'
 
 module Scheme
   class Node
@@ -109,6 +109,10 @@ module Scheme
 
     def is_null?
       true
+    end
+
+    def evaluate(env)
+      self
     end
   end
 

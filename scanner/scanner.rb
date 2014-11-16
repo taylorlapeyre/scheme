@@ -3,7 +3,7 @@ require_relative 'tokens'
 module Scheme
   class Scanner
     WHITESPACE_CHARS     = [" ", "\n"]
-    VALID_VARIABLE_REGEX = /[a-zA-Z_$!_\-\+\/\*=]/
+    VALID_VARIABLE_REGEX = /[a-zA-Z_$!?_><\-\+\/\*=]/
 
     def initialize(string)
       @string = string

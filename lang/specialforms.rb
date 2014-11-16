@@ -54,7 +54,8 @@ module Scheme
 
       until forms.is_null?
         cond_condition = forms.first.first
-        if cond_condition.evaluate(env).val
+        is_else = (cond_condition.is_symbol? && cond_condition.name == "else")
+        if is_else || cond_condition.evaluate(env).val
           result = forms.first.rest.first.evaluate(env)
           break
         else

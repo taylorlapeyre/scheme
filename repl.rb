@@ -12,10 +12,7 @@ global_environment.define_built_in_procedures
 loop do
   print "> "
 
-  input = gets.chomp # "chomp" to get rid of newline at the end
-  exit if input == "exit"
-
-  parser = Scheme::Parser.new(input)
+  parser = Scheme::Parser.new(gets.chomp)
 
   root = parser.parse_next_exp
   while root

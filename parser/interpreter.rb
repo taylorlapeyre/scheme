@@ -1,6 +1,6 @@
 require 'pry'
 require_relative '../lang/literals'
-require_relative '../lang/special_forms'
+require_relative '../lang/specialforms'
 require_relative '../lang/builtins'
 
 module Scheme
@@ -35,7 +35,12 @@ module Scheme
     end
 
     def define_built_in_procedures
-      ["b+", "b-", "b*", "b/", "b="].each do |name|
+      builtins =  ["b+", "b-", "b*", "b/", "b=", "b>", "b<", "number?", "symbol?",
+        "null?", "pair?", "procedure?", "car", "cdr", "set-car!", "set-cdr!", "cons",
+        "eq?", "display", "apply", "read", "newline", "write",
+        "interaction-environment", "exit"]
+
+      builtins.each do |name|
         define(Scheme::Ident.new(name), BuiltIn.new(name))
       end
     end
