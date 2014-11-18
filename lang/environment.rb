@@ -24,7 +24,7 @@ module Scheme
       else
         if @env.nil?
           # we're in the global scope and can't find what it is
-          puts "Unable to find #{key} in current context."
+          puts "Unable to find #{key.name} in current context."
           Scheme::Nil.instance
         else
           @env.lookup(key)

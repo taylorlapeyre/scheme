@@ -20,7 +20,6 @@ module Scheme
   class Begin
     def evaluate(node, env)
       expressions = node.rest
-      val = expressions.first.evaluate(env)
       until expressions.is_null?
         val = expressions.first.evaluate(env)
         expressions = expressions.rest

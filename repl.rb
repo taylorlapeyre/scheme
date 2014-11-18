@@ -9,6 +9,14 @@ puts 'Type "exit" to quit'
 global_environment = Scheme::Environment.new
 global_environment.define_built_in_procedures
 
+parser = Scheme::Parser.new(File.read("lang/core.scm"))
+root = parser.parse_next_exp
+while root
+  root.evaluate(global_environment)
+  root = parser.parse_next_exp
+end
+
+
 loop do
   print "> "
 
