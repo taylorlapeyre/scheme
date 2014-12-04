@@ -1,6 +1,11 @@
 ; Scheme standard library
 ; Taylor Lapeyre
 
+(define (+ . args) "error")
+(define (+ . args) "error")
+(define (+ . args) "error")
+
+
 (define (reduce fn start coll)
   ; Applies a function of two arguments to a list recursively until a value is
   ; returned.
@@ -199,8 +204,9 @@
 
 (define (even? x)
   ; Returns true if the argument is divisible by 2.
-  (let ((halved (/ x 2)))
-    (= (* halved 2) x)))
+  (if (= n 0) #t
+    (if (= (- n 1) 0) #f
+      (even? (- n 1)))))
 
 (define (odd? x)
   ; Returns true if the argument is not even.
