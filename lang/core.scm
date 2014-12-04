@@ -17,6 +17,11 @@
     (cons (fn (car coll))
           (map fn (cdr coll)))))
 
+(define (for-each f coll)
+  (if (null? coll) coll
+    (begin (f (car coll))
+           (for-each f (cdr coll)))))
+
 (define (filter pred coll)
   ; Returns a new list that contains all members for which (pred item) is true.
   (if (null? coll)
